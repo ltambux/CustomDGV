@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')"/>
+    <PropertyGroup>
+        <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+        <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+        <ProjectGuid>{82EFD4AD-C21F-46A3-B413-5A3B75B19C41}</ProjectGuid>
+        <OutputType>WinExe</OutputType>
+        <RootNamespace>CustomDGV</RootNamespace>
+        <AssemblyName>CustomDGV</AssemblyName>
+        <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+        <FileAlignment>512</FileAlignment>
+        <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+        <Deterministic>true</Deterministic>
+        <LangVersion>latestmajor</LangVersion>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+        <PlatformTarget>AnyCPU</PlatformTarget>
+        <DebugSymbols>true</DebugSymbols>
+        <DebugType>full</DebugType>
+        <Optimize>false</Optimize>
+        <OutputPath>bin\Debug\</OutputPath>
+        <DefineConstants>DEBUG;TRACE</DefineConstants>
+        <ErrorReport>prompt</ErrorReport>
+        <WarningLevel>4</WarningLevel>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+        <PlatformTarget>AnyCPU</PlatformTarget>
+        <DebugType>pdbonly</DebugType>
+        <Optimize>true</Optimize>
+        <OutputPath>bin\Release\</OutputPath>
+        <DefineConstants>TRACE</DefineConstants>
+        <ErrorReport>prompt</ErrorReport>
+        <WarningLevel>4</WarningLevel>
+    </PropertyGroup>
+    <ItemGroup>
+        <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+          <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+        </Reference>
+        <Reference Include="System"/>
+        <Reference Include="System.Configuration" />
+        <Reference Include="System.Core"/>
+        <Reference Include="System.Xml.Linq"/>
+        <Reference Include="System.Data.DataSetExtensions"/>
+        <Reference Include="Microsoft.CSharp"/>
+        <Reference Include="System.Data"/>
+        <Reference Include="System.Deployment"/>
+        <Reference Include="System.Drawing"/>
+        <Reference Include="System.Net.Http"/>
+        <Reference Include="System.Windows.Forms"/>
+        <Reference Include="System.Xml"/>
+    </ItemGroup>
+    <ItemGroup>
+        <Compile Include="DgvModel\IActionContainer.cs" />
+        <Compile Include="DgvModel\DgvJsonManager.cs" />
+        <Compile Include="DgvUi\DGV.cs">
+          <SubType>UserControl</SubType>
+        </Compile>
+        <Compile Include="DgvUi\DGV.Designer.cs">
+          <DependentUpon>DGV.cs</DependentUpon>
+        </Compile>
+        <Compile Include="DgvUi\DGVM.cs">
+          <SubType>UserControl</SubType>
+        </Compile>
+        <Compile Include="DgvUi\DGVM.Designer.cs">
+          <DependentUpon>DGVM.cs</DependentUpon>
+        </Compile>
+        <Compile Include="DgvModel\CellProperty.cs" />
+        <Compile Include="DgvModel\ColumnManager.cs" />
+        <Compile Include="DgvModel\DGVType.cs" />
+        <Compile Include="DgvModel\CustomColumn.cs" />
+        <Compile Include="DgvModel\CustomRow.cs" />
+        <Compile Include="AppConfigReader.cs" />
+        <Compile Include="JsonSettings.cs" />
+        <Compile Include="Program.cs"/>
+        <Compile Include="Properties\AssemblyInfo.cs"/>
+        <Compile Include="Log.cs" />
+        <Compile Include="StringHelp.cs" />
+        <Compile Include="Test\ActionControl.cs" />
+        <Compile Include="Test\CustomButton.cs">
+          <SubType>Component</SubType>
+        </Compile>
+        <Compile Include="Test\CustomButton.Designer.cs">
+          <DependentUpon>CustomButton.cs</DependentUpon>
+        </Compile>
+        <Compile Include="Test\Form1.cs">
+          <SubType>Form</SubType>
+        </Compile>
+        <Compile Include="Test\Form1.Designer.cs">
+          <DependentUpon>Form1.cs</DependentUpon>
+        </Compile>
+        <Compile Include="Test\Form2.cs">
+          <SubType>Form</SubType>
+        </Compile>
+        <Compile Include="Test\Form2.Designer.cs">
+          <DependentUpon>Form2.cs</DependentUpon>
+        </Compile>
+        <Compile Include="Test\NxEntitySelector.cs" />
+        <Compile Include="Test\Popup.cs">
+          <SubType>Form</SubType>
+        </Compile>
+        <Compile Include="Test\Popup.Designer.cs">
+          <DependentUpon>Popup.cs</DependentUpon>
+        </Compile>
+        <Compile Include="Test\SelectFromListDialogForm.cs" />
+        <Compile Include="Test\SelectFromListDialogForm.Designer.cs" />
+        <Compile Include="Test\WeighList.cs" />
+        <Compile Include="Test\WeightListControl.cs" />
+        <Compile Include="Test\WeightListControl.Designer.cs" />
+        <EmbeddedResource Include="DgvUi\DGV.resx">
+          <DependentUpon>DGV.cs</DependentUpon>
+        </EmbeddedResource>
+        <EmbeddedResource Include="DgvUi\DGVM.resx">
+          <DependentUpon>DGVM.cs</DependentUpon>
+        </EmbeddedResource>
+        <EmbeddedResource Include="Properties\Resources.resx">
+            <Generator>ResXFileCodeGenerator</Generator>
+            <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+            <SubType>Designer</SubType>
+        </EmbeddedResource>
+        <Compile Include="Properties\Resources.Designer.cs">
+            <AutoGen>True</AutoGen>
+            <DependentUpon>Resources.resx</DependentUpon>
+        </Compile>
+        <EmbeddedResource Include="Test\Form1.resx">
+          <DependentUpon>Form1.cs</DependentUpon>
+        </EmbeddedResource>
+        <EmbeddedResource Include="Test\Form2.resx">
+          <DependentUpon>Form2.cs</DependentUpon>
+        </EmbeddedResource>
+        <EmbeddedResource Include="Test\Popup.resx">
+          <DependentUpon>Popup.cs</DependentUpon>
+        </EmbeddedResource>
+        <EmbeddedResource Include="Test\SelectFromListDialogForm.resx" />
+        <EmbeddedResource Include="Test\WeightListControl.resx" />
+        <None Include="log4net.config" />
+        <None Include="packages.config" />
+        <None Include="Properties\Settings.settings">
+            <Generator>SettingsSingleFileGenerator</Generator>
+            <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+        </None>
+        <Compile Include="Properties\Settings.Designer.cs">
+            <AutoGen>True</AutoGen>
+            <DependentUpon>Settings.settings</DependentUpon>
+            <DesignTimeSharedInput>True</DesignTimeSharedInput>
+        </Compile>
+    </ItemGroup>
+    <ItemGroup>
+        <None Include="App.config"/>
+    </ItemGroup>
+    <ItemGroup>
+      <Content Include="Repository\ColumnsConfig.json">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Content>
+    </ItemGroup>
+    <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
+</Project>
